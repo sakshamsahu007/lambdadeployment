@@ -12,6 +12,15 @@ from botocore.exceptions import ClientError
 
 import sys
 
+if( len(sys.argv) < 4):
+    print("Insufficient Arguments.")
+    exit(1)
+    
+
+mode=sys.argv[1]
+repo=sys.argv[2]
+workspace=sys.argv[3]
+
 def code_download(repo, workspace):
     print(repo)
     shutil.rmtree(workspace + "/code")
@@ -72,13 +81,7 @@ def upload_to_lambda():
 #print ('Number of arguments:', len(sys.argv), 'arguments.')
 #print ('Argument List:', str(sys.argv))
 #print (sys.argv[1])
-mode=sys.argv[1]
-repo=sys.argv[2]
-workspace=sys.argv[3]
 
-if( len(sys.argv) < 4):
-    print("Insufficient Arguments.")
-    exit(1)
 
 if (mode == 'download'):
     code_download(repo, workspace)
