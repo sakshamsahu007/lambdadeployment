@@ -14,6 +14,7 @@ import sys
 
 def code_download(repo, workspace):
     print(repo)
+    shutil.rmtree(workspace + "/code")
     Repo.clone_from(repo, workspace + "/code") 
 
 
