@@ -1,5 +1,5 @@
 pipeline {
-		agent { node { label 'DEV_SLAVE'}}
+		agent { node { label ${Environment}}}
    
 		stages{
     
