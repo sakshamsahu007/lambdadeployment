@@ -1,12 +1,12 @@
 pipeline {
-		//agent { node { label "${Environment}"}}
-		agent any
+		agent { node { label "${Environment}"}}
+		//agent any
 		parameters{
 			choice(
 				name: 'Environment',
 				choices: 'DEV_SLAVE\nQA_SLAVE',
 				description: "Choose Enviroment to build"
-			)
+			)	
 		}
    
 		stages{
