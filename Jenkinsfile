@@ -2,20 +2,30 @@ pipeline {
     agent any
 		stages{
     
-			stage('Init') {
+			stage('Download') {
 				steps {
-					echo "Testing...."
+					echo "Downloading...."
 					}
 				}
-			stage('Build') {
+			stage('Install from requirements.txt') {
 				steps {
-					echo "Building...."
+					echo "Installing...."
 					}          
 				}
         
-			stage('Deploy') {
+			stage('Create Zip') {
 				steps {
-					echo "Code Deployed...."
+					echo "Creating Zip...."
+					}
+				}
+			stage('Upload to S3') {
+				steps {
+					echo "Uploading to S3...."
+					}
+				}
+			stage('Upload to Lambda') {
+				steps {
+					echo "Uploading to Lambda...."
 					}
 				}
 		}
