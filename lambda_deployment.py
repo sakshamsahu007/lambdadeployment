@@ -14,7 +14,7 @@ import sys
 
 def code_download(repo, workspace):
     print(repo)
-    Repo.clone_from(repo, workspace)
+    Repo.clone_from(repo, workspace + "/code") 
 
 
 
