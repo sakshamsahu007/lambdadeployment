@@ -20,13 +20,13 @@ pipeline {
 				}
 			stage('Install Dependencies') {
 				steps {
-						sh "python3 lambda_deployment.py install_depedencies ${env.REPO_URL} ${env.WORKSPACE}" //complete path
+					sh "python3 lambda_deployment.py install_depedencies ${env.REPO_URL} ${env.WORKSPACE}"
 					}          
 				}
         
 			stage('Create Zip') {
 				steps {
-					echo "Creating Zip...."
+					sh "python3 lambda_deployment.py create_zip ${env.REPO_URL} ${env.WORKSPACE}"
 					}
 				}
 			stage('Upload to S3') {

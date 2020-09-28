@@ -38,14 +38,14 @@ def install_depedencies(workspace):
         print("File does not exist.")
         exit(1)
 
-def create_zip():
+def create_zip(workspace):
 
-    shutil.make_archive('files', 'zip', "H:\\Test" )
+    shutil.make_archive(workspace + '/code', 'zip', workspace )
     print('zip file created successfully')
     
     
 
-    
+
 def upload_zipfile_s3(file_name, bucket, object_name=None):
 
     if object_name is None:
@@ -85,6 +85,8 @@ if (mode == 'code_download'):
     code_download(repo, workspace)
 elif (mode == 'install_depedencies'):
     install_depedencies(workspace)
+elif (mode == 'create_zip'):
+    create_zip(workspace)
 
 #file_download()
 #create_zip()
