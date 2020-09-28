@@ -14,6 +14,8 @@ pipeline {
 			stage('Download') {
 				steps {
 					echo "${env.REPO_URL}"
+					sh "python3 lambda_deployment.py download ${env.REPO_URL}" //complete path
+					
 					}
 				}
 			stage('Install from requirements.txt') {
