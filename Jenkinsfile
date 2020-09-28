@@ -13,7 +13,7 @@ pipeline {
     
 			stage('Download') {
 				steps {
-					echo "Downloading...."
+					echo "${env.REPO_URL}"
 					}
 				}
 			stage('Install from requirements.txt') {
