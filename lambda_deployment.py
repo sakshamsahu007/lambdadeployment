@@ -76,7 +76,7 @@ mode=sys.argv[1]
 repo=sys.argv[2]
 workspace=sys.argv[3]
 
-if( len(sys.argv) < 4)
+if( len(sys.argv) < 4):
     print("Insufficient Arguments.")
     exit(1)
 
