@@ -1,4 +1,5 @@
 pipeline {
+agent any
     node('DEV_SLAVE'){
     
 		stages{
