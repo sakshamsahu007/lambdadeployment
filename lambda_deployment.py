@@ -38,20 +38,6 @@ def install_depedencies(workspace):
         exit(1)
 
 
-def file_download():
-
-    
-    Repo.clone_from("https://github.com/sakshamsahu007/DevOps.git", '../Test')
-    
-    file = pathlib.Path('../Test/requirements.txt')
-
-    if file.exists():
-        print('File exists and installing...')
-        pip.main(['install', '-t', '../Test', '-r', '../Test/requirements.txt'])
-    else:
-        print("File does not exist.")
-
-
 def create_zip():
 
     shutil.make_archive('files', 'zip', "H:\\Test" )
