@@ -1,5 +1,5 @@
 pipeline {
-		agent { node { label ${Environment}}}
+		agent { node { label "${Environment}"}}
    
 		stages{
     
