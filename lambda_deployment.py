@@ -43,8 +43,8 @@ def install_depedencies(workspace):
 
 def create_zip(workspace):
 
-    shutil.make_archive(workspace + '/code', 'zip', workspace )
-    print('zip file created successfully')
+    shutil.make_archive('code', 'zip', workspace + '/code')
+    print('zip file created successfull y')
     
     
 
