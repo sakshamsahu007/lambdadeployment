@@ -87,7 +87,8 @@ def upload_to_lambda():
 if (mode == 'code_download'):
     code_download(repo, workspace)
 elif (mode == 'install_depedencies'):
-    install_depedencies(workspace)
+    #install_depedencies(workspace)
+    print("Dummy Installation completed...")
 elif (mode == 'create_zip'):
     create_zip(workspace)
 
