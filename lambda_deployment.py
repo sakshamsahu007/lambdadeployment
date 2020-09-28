@@ -23,8 +23,11 @@ workspace=sys.argv[3]
 
 def code_download(repo, workspace):
     print(repo)
-    shutil.rmtree(workspace + "/code")
-    Repo.clone_from(repo, workspace + "/code") 
+    code_directory=workspace + '/code'
+    if( os.path.isdir(code_directory)):
+        shutil.rmtree(code_directory)
+
+    Repo.clone_from(repo, code_directory) 
     #ToDo fetch and checkout based on Environment Varaiable
 
 def install_depedencies(workspace):
@@ -92,15 +95,3 @@ elif (mode == 'create_zip'):
 #create_zip()
 #upload_zipfile_s3('H:\\DevOpsAutomation\\files.zip', 'sakshamtest', 'files.zip')
 #upload_to_lambda()
-
-
-
-
-
-
-
-
-
-
-
-
