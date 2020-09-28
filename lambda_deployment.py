@@ -26,6 +26,16 @@ def code_download(repo, workspace):
     shutil.rmtree(workspace + "/code")
     Repo.clone_from(repo, workspace + "/code") 
 
+def install_depedencies(workspace):
+    code_directory=workspace + '/code'
+    file = pathlib.Path(code_directory + '/requirements.txt')
+
+    if file.exists():
+        print('Installing modules...')
+        pip.main(['install', '-t', code_directory, '-r', code_directory + '/requirements.txt'])
+    else:
+        print("File does not exist.")
+        exit(1)
 
 
 def file_download():
@@ -83,9 +93,10 @@ def upload_to_lambda():
 #print (sys.argv[1])
 
 
-if (mode == 'download'):
+if (mode == 'code_download'):
     code_download(repo, workspace)
-
+elif (mode == 'install_depedencies'):
+    install_depedencies(workspace)
 
 #file_download()
 #create_zip()

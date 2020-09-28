@@ -11,16 +11,16 @@ pipeline {
    
 		stages{
     
-			stage('Download') {
+			stage('Download From Repo') {
 				steps {
 					echo "${env.REPO_URL}"
-					sh "python3 lambda_deployment.py download ${env.REPO_URL} ${env.WORKSPACE}" //complete path
+					sh "python3 lambda_deployment.py code_download ${env.REPO_URL} ${env.WORKSPACE}" //complete path
 					
 					}
 				}
-			stage('Install from requirements.txt') {
+			stage('Install Dependencies') {
 				steps {
-					echo "Installing...."
+						sh "python3 lambda_deployment.py install_depedencies ${env.REPO_URL} ${env.WORKSPACE}" //complete path
 					}          
 				}
         
