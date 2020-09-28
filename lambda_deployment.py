@@ -1,19 +1,20 @@
-#import os
-#from git.repo.base import Repo
-#import pathlib
-#import pip
+import os
+from git.repo.base import Repo
+import pathlib
+import pip
 
-#import zipfile
-#import shutil
-#import logging
-#import boto3
-#from botocore.exceptions import ClientError
+import zipfile
+import shutil
+import logging
+import boto3
+from botocore.exceptions import ClientError
 #import subprocess
 
 import sys
 
-def code_download(repo):
+def code_download(repo, workspace):
     print(repo)
+    Repo.clone_from(repo, workspace)
 
 
 
@@ -72,8 +73,9 @@ print ('Argument List:', str(sys.argv))
 print (sys.argv[1])
 mode=sys.argv[1]
 repo=sys.argv[2]
+workspace=sys.argv[3]
 if (mode == 'download'):
-    code_download(repo)
+    code_download(repo, workspace)
 
 
 #file_download()
