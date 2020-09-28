@@ -1,7 +1,6 @@
 pipeline {
-agent any
-    node('DEV_SLAVE'){
-    
+		agent { node { label 'DEV_SLAVE'}}
+   
 		stages{
     
 			stage('Download') {
@@ -31,5 +30,4 @@ agent any
 					}
 				}
 		}
-	}
 }
