@@ -25,6 +25,7 @@ def code_download(repo, workspace):
     print(repo)
     shutil.rmtree(workspace + "/code")
     Repo.clone_from(repo, workspace + "/code") 
+    #ToDo fetch and checkout based on Environment Varaiable
 
 def install_depedencies(workspace):
     code_directory=workspace + '/code'
@@ -37,12 +38,13 @@ def install_depedencies(workspace):
         print("File does not exist.")
         exit(1)
 
-
 def create_zip():
 
     shutil.make_archive('files', 'zip', "H:\\Test" )
     print('zip file created successfully')
     
+    
+
     
 def upload_zipfile_s3(file_name, bucket, object_name=None):
 
