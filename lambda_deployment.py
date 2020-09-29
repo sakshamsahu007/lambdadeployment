@@ -22,12 +22,12 @@ repo=sys.argv[2]
 workspace=sys.argv[3]
 s3_bucket_name='sakshamtest'
 s3_object_name='code.zip'
-upload_file_name= pathlib.Path(workspace + '/code.zip')
+upload_file_name= workspace + '/code.zip'
 
 def code_download(repo, workspace):
     print(repo)
     code_directory=workspace + '/code'
-    if( os.path.isdir(code_directory)):
+    if (os.path.isdir(code_directory)):
         shutil.rmtree(code_directory)
 
     Repo.clone_from(repo, code_directory) 
