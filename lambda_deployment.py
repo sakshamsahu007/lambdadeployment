@@ -28,7 +28,15 @@ lambda_directory='testlambda'
 
 def code_download(repo, workspace):
     print(repo)
-    
+    #os.chmod(code_directory, 0o777)
+
+    for root, dirs, files in os.walk(code_directory):
+        for d in dirs:
+            os.chmod(os.path.join(root, d), 0o777)
+        for f in files:
+            os.chmod(os.path.join(root, f), 0o777)
+
+
     if (os.path.isdir(code_directory)):
         shutil.rmtree(code_directory)
 
