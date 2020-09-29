@@ -23,7 +23,7 @@ workspace=sys.argv[3]
 lambda_function_name=sys.argv[4]
 code_directory=workspace + '/code'
 s3_bucket_name='sakshamtest'
-s3_object_name='code.zip'
+s3_object_name= lambda_function_name + '.zip'
 code_zip_file_path= code_directory + '.zip'
 
 def code_download(repo, workspace):
