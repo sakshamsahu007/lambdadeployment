@@ -8,8 +8,6 @@ import shutil
 import logging
 import boto3
 from botocore.exceptions import ClientError
-#import subprocess
-
 import sys
 
 if( len(sys.argv) < 4):
@@ -25,6 +23,8 @@ code_directory=workspace + '/code'
 s3_bucket_name='sakshamtest'
 s3_object_name= lambda_function_name + '.zip'
 code_zip_file_path= code_directory + '.zip'
+lambda_directory='testlambda'
+
 
 def code_download(repo, workspace):
     print(repo)
@@ -51,6 +51,7 @@ def install_depedencies(workspace):
 def create_zip(workspace):
     shutil.make_archive('code', 'zip', workspace + '/code')
     print('zip file created successfull y')
+    #ToDo exclude ./git folder before creating zip file
 
 
 def upload_zipfile_s3(file_path, s3_bucket_name, s3_object_name):
@@ -67,22 +68,16 @@ def upload_zipfile_s3(file_path, s3_bucket_name, s3_object_name):
     return True 
 
 
-def upload_to_lambda():
-
+def upload_to_lambda(lambda_directory,s3_bucket_name,s3_object_name):
     client=boto3.client('lambda')
 
     response = client.update_function_code(
-        FunctionName='testlambda',
-        S3Bucket='sakshamtest',
-        S3Key='files.zip',
+        FunctionName=lambda_directory,
+        S3Bucket=s3_bucket_name,
+        S3Key=s3_object_name,
     )   
-
     print(response)
 
-
-#print ('Number of arguments:', len(sys.argv), 'arguments.')
-#print ('Argument List:', str(sys.argv))
-#print (sys.argv[1])
 
 
 if (mode == 'code_download'):
@@ -94,8 +89,5 @@ elif (mode == 'create_zip'):
     create_zip(workspace)
 elif (mode == 'upload_s3'):
     upload_zipfile_s3(code_zip_file_path,s3_bucket_name,s3_object_name)
-
-#file_download()
-#create_zip()
-#upload_zipfile_s3('H:\\DevOpsAutomation\\files.zip', 'sakshamtest', 'files.zip')
-#upload_to_lambda()
+elif (mode == 'upload_lambda'):
+    upload_to_lambda(lambda_directory,s3_bucket_name,s3_object_name)
