@@ -20,23 +20,23 @@ pipeline {
 				}
 			stage('Install Dependencies') {
 				steps {
-					sh "python lambda_deployment.py install_depedencies ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					bat "python lambda_deployment.py install_depedencies ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}          
 				}
         
 			stage('Create Zip') {
 				steps {
-					sh "python lambda_deployment.py create_zip ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					bat "python lambda_deployment.py create_zip ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}
 				}
 			stage('Upload to S3') {
 				steps {
-					sh "python lambda_deployment.py upload_zipfile_s3 ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					bat "python lambda_deployment.py upload_zipfile_s3 ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}
 				}
 			stage('Upload to Lambda') {
 				steps {
-					sh "python lambda_deployment.py upload_to_lambda ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					bat "python lambda_deployment.py upload_to_lambda ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}
 				}
 		}
