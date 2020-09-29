@@ -106,7 +106,7 @@ elif (mode == 'install_depedencies'):
     #print("Dummy Installation completed...")
 elif (mode == 'create_zip'):
     create_zip(workspace)
-elif (mode == 'upload_s3'):
+elif (mode == 'upload_zipfile_s3'):
     upload_zipfile_s3(code_zip_file_path,s3_bucket_name,s3_object_name)
-elif (mode == 'upload_lambda'):
+elif (mode == 'upload_to_lambda'):
     upload_to_lambda(lambda_directory,s3_bucket_name,s3_object_name)

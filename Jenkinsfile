@@ -31,12 +31,12 @@ pipeline {
 				}
 			stage('Upload to S3') {
 				steps {
-					sh "python3 lambda_deployment.py upload_s3 ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					sh "python3 lambda_deployment.py upload_zipfile_s3 ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}
 				}
 			stage('Upload to Lambda') {
 				steps {
-					sh "python3 lambda_deployment.py upload_lambda ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
+					sh "python3 lambda_deployment.py upload_to_lambda ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}"
 					}
 				}
 		}
