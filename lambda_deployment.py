@@ -70,6 +70,7 @@ def create_zip(workspace):
 
 
 def upload_zipfile_s3(file_path, s3_bucket_name, s3_object_name):
+    print("file upload started....")
     s3_client = boto3.client('s3')
     try:
         print("file upload started")
