@@ -20,13 +20,14 @@ if( len(sys.argv) < 4):
 mode=sys.argv[1]
 repo=sys.argv[2]
 workspace=sys.argv[3]
+code_directory=workspace + '/code'
 s3_bucket_name='sakshamtest'
 s3_object_name='code.zip'
-upload_file_name= workspace + '/code.zip'
+code_zip_file_path= code_directory + '.zip'
 
 def code_download(repo, workspace):
     print(repo)
-    code_directory=workspace + '/code'
+    
     if (os.path.isdir(code_directory)):
         shutil.rmtree(code_directory)
 
@@ -35,7 +36,7 @@ def code_download(repo, workspace):
 
 
 def install_depedencies(workspace):
-    code_directory=workspace + '/code'
+    
     file = pathlib.Path(code_directory + '/requirements.txt')
 
     if file.exists():
@@ -51,15 +52,13 @@ def create_zip(workspace):
     print('zip file created successfull y')
 
 
-def upload_zipfile_s3(file_name, bucket, object_name=None):
-    if object_name is None:
-        object_name = file_name
-
+def upload_zipfile_s3(file_path, s3_bucket_name, s3_object_name):
     s3_client = boto3.client('s3')
     try:
-        print("started")
-        response = s3_client.upload_file(file_name, bucket, object_name)
+        print("file upload started")
+        response = s3_client.upload_file(file_path, s3_bucket_name, s3_object_name)
         print(response)
+        print("file upload complete")
     except ClientError as e:
         logging.error(e)
         print(e)
@@ -93,7 +92,7 @@ elif (mode == 'install_depedencies'):
 elif (mode == 'create_zip'):
     create_zip(workspace)
 elif (mode == 'upload_s3'):
-    upload_zipfile_s3(upload_file_name,s3_bucket_name,s3_object_name)
+    upload_zipfile_s3(code_zip_file_path,s3_bucket_name,s3_object_name)
 
 #file_download()
 #create_zip()
