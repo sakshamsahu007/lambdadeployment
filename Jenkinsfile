@@ -31,7 +31,7 @@ pipeline {
 				}
 			stage('Upload to S3') {
 				steps {
-					echo "Uploading to S3...."
+					sh "python3 lambda_deployment.py upload_s3 ${env.REPO_URL} ${env.WORKSPACE}"
 					}
 				}
 			stage('Upload to Lambda') {

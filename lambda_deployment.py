@@ -20,6 +20,9 @@ if( len(sys.argv) < 4):
 mode=sys.argv[1]
 repo=sys.argv[2]
 workspace=sys.argv[3]
+s3_bucket_name='sakshamtest'
+s3_object_name='code.zip'
+upload_file_name= pathlib.Path(workspace + '/code.zip')
 
 def code_download(repo, workspace):
     print(repo)
@@ -29,6 +32,7 @@ def code_download(repo, workspace):
 
     Repo.clone_from(repo, code_directory) 
     #ToDo fetch and checkout based on Environment Varaiable
+
 
 def install_depedencies(workspace):
     code_directory=workspace + '/code'
@@ -41,16 +45,13 @@ def install_depedencies(workspace):
         print("File does not exist.")
         exit(1)
 
-def create_zip(workspace):
 
+def create_zip(workspace):
     shutil.make_archive('code', 'zip', workspace + '/code')
     print('zip file created successfull y')
-    
-    
 
 
 def upload_zipfile_s3(file_name, bucket, object_name=None):
-
     if object_name is None:
         object_name = file_name
 
@@ -91,6 +92,8 @@ elif (mode == 'install_depedencies'):
     print("Dummy Installation completed...")
 elif (mode == 'create_zip'):
     create_zip(workspace)
+elif (mode == 'upload_s3'):
+    upload_zipfile_s3(upload_file_name,s3_bucket_name,s3_object_name)
 
 #file_download()
 #create_zip()
