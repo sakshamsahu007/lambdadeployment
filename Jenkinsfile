@@ -14,7 +14,7 @@ pipeline {
 			stage('Download From Repo') {
 				steps {
 					echo "${env.REPO_URL}"
-					sh "python lambda_deployment.py code_download ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}" //complete path
+					bat  "python lambda_deployment.py code_download ${env.REPO_URL} ${env.WORKSPACE} ${env.LAMBDA_FUNCTION_NAME}" //complete path
 					
 					}
 				}
