@@ -20,6 +20,7 @@ if( len(sys.argv) < 4):
 mode=sys.argv[1]
 repo=sys.argv[2]
 workspace=sys.argv[3]
+lambda_function_name=sys.argv[4]
 code_directory=workspace + '/code'
 s3_bucket_name='sakshamtest'
 s3_object_name='code.zip'
