@@ -83,8 +83,8 @@ def upload_to_lambda(lambda_directory,s3_bucket_name,s3_object_name):
 if (mode == 'code_download'):
     code_download(repo, workspace)
 elif (mode == 'install_depedencies'):
-    #install_depedencies(workspace)
-    print("Dummy Installation completed...")
+    install_depedencies(workspace)
+    #print("Dummy Installation completed...")
 elif (mode == 'create_zip'):
     create_zip(workspace)
 elif (mode == 'upload_s3'):
