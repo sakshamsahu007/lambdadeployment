@@ -41,14 +41,15 @@ def code_download(repo, workspace):
         shutil.rmtree(code_directory)
 
     Repo.clone_from(repo, code_directory) 
-
+    #ToDo fetch and checkout based on Environment Varaiable
+    
     for root, dirs, files in os.walk(code_directory + "/.git"):
         for d in dirs:
             os.chmod(os.path.join(root, d), 0o777)
         for f in files:
             os.chmod(os.path.join(root, f), 0o777)
     shutil.rmtree(code_directory + "/.git")
-    #ToDo fetch and checkout based on Environment Varaiable
+    
 
 
 def install_depedencies(workspace):

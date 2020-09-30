@@ -1,14 +1,6 @@
 pipeline {
 		agent { node { label "${env.Environment}"}}
-		//agent any
-		// parameters{
-		// 	choice(
-		// 		name: 'Environment',
-		// 		choices: 'DEV_SLAVE\nQA_SLAVE',
-		// 		description: "Choose Enviroment to build"
-		// 	)	
-		// }
-   
+		//ToDo select label based on environment variable - DEV QA PROD N2P
 		stages{
     
 			stage('Download From Repo') {
