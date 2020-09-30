@@ -5,7 +5,7 @@ import subprocess
 
 prompt = '> '
 
-print "Enter the name of branch you need to clone: "
+print ("Enter the name of branch you need to clone: ")
 user_branch = raw_input(prompt)
 
 print "You Entered: ",user_branch
