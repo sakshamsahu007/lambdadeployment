@@ -40,9 +40,9 @@ def code_download(repo, workspace):
     if (os.path.isdir(code_directory)):
         shutil.rmtree(code_directory)
 
-    Repo.clone_from(repo, code_directory) 
+    Repo.clone_from(repo, code_directory)
     #ToDo fetch and checkout based on Environment Varaiable
-    
+
     for root, dirs, files in os.walk(code_directory + "/.git"):
         for d in dirs:
             os.chmod(os.path.join(root, d), 0o777)
