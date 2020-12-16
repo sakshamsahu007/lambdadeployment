@@ -1,0 +1,6 @@
+String LAMBDA_NAME = "${env.LAMBDA_FUNCTION_NAME}"
+println(LAMBDA_NAME);
+String[] str;
+str = LAMBDA_NAME.split('-');
+println(str[0]);
+println(str[1])
