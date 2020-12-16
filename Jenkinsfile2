@@ -1,6 +1,10 @@
-String LAMBDA_NAME = "${env.LAMBDA_FUNCTION_NAME}"
-println(LAMBDA_NAME);
-String[] str;
-str = LAMBDA_NAME.split('-');
-println(str[0]);
-println(str[1])
+String LAMBDA_DETAILS = "${env.LAMBDA_DETAILS}";
+println('Lambda Details : ' + LAMBDA_DETAILS);
+
+
+String[] parts = LAMBDA_DETAILS.split("-", 2);
+String env = parts[0];
+String LAMBDA_FUNCTION_NAME = parts[1];
+
+println(env);
+println(LAMBDA_FUNCTION_NAME);
